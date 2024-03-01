@@ -1,6 +1,6 @@
-import { RouterContext } from "../components/Router/Router.types";
-
 export interface DocumentProps {
   path?: string;
-  context?: RouterContext;
+  Component?: any;
+  props?: any;
+  isServer: boolean;
 }

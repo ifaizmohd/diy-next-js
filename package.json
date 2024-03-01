@@ -1,5 +1,5 @@
 {
-  "name": "lavish_looks",
+  "name": "diy-nextjs",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Faiz Mohd <42231693+ifaizmohd@users.noreply.github.com>",
@@ -7,7 +7,6 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "express": "^4.18.2",
-    "mongoose": "^7.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",

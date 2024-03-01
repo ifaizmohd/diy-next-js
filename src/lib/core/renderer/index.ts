@@ -4,10 +4,12 @@ import { renderToNodeStram } from "./renderer";
 export default function renderNodeStream(
   req: Request,
   res: Response,
-  hydrator: any
+  component: any,
+  props: any,
+  isServer: boolean
 ) {
   if (!req || !res || !req.path) {
     throw new Error('Invalid Path');
   }
-  renderToNodeStram(req, res, hydrator);
+  renderToNodeStram(req, res, component, props, isServer);
 }
