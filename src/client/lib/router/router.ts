@@ -1,4 +1,5 @@
 import { Page } from "../../../lib/router/router.types";
+import routes from "../../config/routes.config";
 import { RouterArgs } from "./index.types";
 
 export function _routerPush({ state = {}, opts = "", url, args }: RouterArgs) {
@@ -38,4 +39,12 @@ export async function getComponent(pathName: string) {
     console.log("error occurred in getComponent router.ts file -> ", error);
   }
   return component;
+}
+
+export function getMatchedComponent() {
+  if (window) {
+    const pathName = window.location.pathname;
+    console.log("pathname: ", pathName);
+    return routes.find((route) => pathName === route.path);
+  }
 }

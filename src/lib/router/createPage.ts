@@ -1,8 +1,13 @@
 import fs from "fs/promises";
 import path from "path";
+import axios, { AxiosResponse } from "axios";
 import { getNameWithoutExtension } from "../../utils/utils";
 import { Page } from "./router.types";
 import { routerConstants } from "./routerConstants";
+
+const axiosInstance = axios.create({
+  baseURL: "https://jsonplaceholder.typicode.com",
+});
 
 export async function getPageToRender(pathName: string, isServer: boolean) {
   let component: Page;
@@ -13,8 +18,10 @@ export async function getPageToRender(pathName: string, isServer: boolean) {
     console.log("pages - ", page);
     if (page) {
       component = await import(`../../client/pages/${page}`);
-      if (component && component.getServerSideProps) {
-        props = component.getServerSideProps();
+      if (component && component.getInitialProps) {
+        props = await component.getInitialProps(axiosInstance);
+      } else if (component && component.getServerSideProps) {
+        props = await component.getServerSideProps(axiosInstance);
       }
     }
   } catch (error) {

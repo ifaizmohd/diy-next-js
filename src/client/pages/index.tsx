@@ -1,18 +1,6 @@
-import React, { FC, useEffect } from "react";
-import { getComponent } from "../lib/router/router";
+import React, { FC } from "react";
 
-const Home: FC = ({ path, isServer = false }: any) => {
-  let Component;
-  useEffect(() => {
-    const getMatchedComponent = async () => {
-      if (typeof window !== "undefined") {
-        const pathName = window?.location?.pathname;
-        Component = await getComponent(pathName);
-        console.log("component ---> ", Component);
-      }
-    };
-    getMatchedComponent();
-  }, []);
+const Home: FC = () => {
   return (
     <div>
       <h3>Hi I'm Home component</h3>

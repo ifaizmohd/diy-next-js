@@ -12,6 +12,7 @@ export interface Route {
 }
 
 export interface Page {
-  getServerSideProps?: Function;
+  getInitialProps?: Function;
   default: FC;
+  getServerSideProps?: Function;
 }
